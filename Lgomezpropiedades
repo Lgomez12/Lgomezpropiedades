@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leticia Gómez Propiedades | Chivilcoy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#68358C',
+                        secondary: '#44AD46',
+                        accent: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #68358C 0%, #9B4D8A 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #68358C 0%, #44AD46 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        /* Menú móvil */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.active {
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-white">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div>
+                        <span class="text-xl sm:text-2xl font-bold text-primary block leading-none">Leticia</span>
+                        <span class="text-xl sm:text-2xl font-bold text-secondary block leading-none">Gómez</span>
+                        <span class="text-xs text-gray-600 tracking-widest">PROPIEDADES</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Inicio</a>
+                    <a href="#nosotros" class="text-gray-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Quiénes Somos</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Servicios</a>
+                    <a href="#tasaciones" class="text-gray-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Tasaciones</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Contacto</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none p-2">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu flex-col md:hidden">
+                <a href="#inicio" class="block text-gray-600 hover:text-primary transition-colors font-medium py-3 border-t border-gray-100">Inicio</a>
+                <a href="#nosotros" class="block text-gray-600 hover:text-primary transition-colors font-medium py-3 border-t border-gray-100">Quiénes Somos</a>
+                <a href="#servicios" class="block text-gray-600 hover:text-primary transition-colors font-medium py-3 border-t border-gray-100">Servicios</a>
+                <a href="#tasaciones" class="block text-gray-600 hover:text-primary transition-colors font-medium py-3 border-t border-gray-100">Tasaciones</a>
+                <a href="#contacto" class="block text-gray-600 hover:text-primary transition-colors font-medium py-3 border-t border-gray-100">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-28 sm:pt-32 pb-12 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+                Hacemos simple lo importante.
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-8 px-2">
+                Tu inmobiliaria de confianza en Chivilcoy. Te brindamos un asesoramiento honesto y profesional para acompañarte en cada etapa de tu próximo proyecto.
+            </p>
+            <a href="https://wa.me/5492346636360?text=Hola%20Leticia,%20quisiera%20hacerte%20una%20consulta." 
+               class="inline-flex items-center bg-secondary hover:bg-green-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all transform hover:scale-105 shadow-lg text-sm sm:text-base">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Escribinos por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-12 sm:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-gray-800">
+                        Quiénes Somos
+                    </h2>
+                    <h3 class="text-lg sm:text-xl text-primary mb-4 font-semibold">
+                        Compromiso y profesionalismo en el mercado inmobiliario
+                    </h3>
+                    <p class="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                        Nuestra inmobiliaria, ubicada en Chivilcoy, se dedica a brindar servicios integrales en el sector inmobiliario. Nos especializamos en la tasación y venta de propiedades, ofreciendo un servicio completo y personalizado a cada uno de nuestros clientes.
+                    </p>
+                    <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                        Valoramos la transparencia, la integridad y el compromiso, asegurando que cada transacción se realice de manera eficiente y confiable.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold text-primary mb-2 text-sm sm:text-base">Misión</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Ofrecer servicios inmobiliarios de alta calidad, proporcionando la mejor asesoría y apoyo en cada etapa.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold text-primary mb-2 text-sm sm:text-base">Visión</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Ser la inmobiliaria de referencia en Chivilcoy, reconocida por nuestro compromiso y relaciones de confianza.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=700&fit=crop" 
+                         alt="Oficina Leticia Gómez Propiedades" 
+                         class="rounded-lg shadow-2xl w-full object-cover"
+                         style="max-height: 500px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-12 sm:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">Nuestros Servicios</h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-2">Te acompañamos en cada paso del proceso inmobiliario con profesionalismo y dedicación.</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 gradient-bg rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Venta de Propiedades</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Acompañamiento integral en procesos de venta. Te ayudamos a encontrar el comprador ideal y gestionamos toda la documentación necesaria.</p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 gradient-bg rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Alquileres</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Asesoramiento en procesos de alquiler permanente y comercial. Conectamos propietarios con inquilinos responsables.</p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 gradient-bg rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Tasaciones Profesionales</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Valoración técnica de propiedades con criterio profesional y conocimiento del mercado local de Chivilcoy.</p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 gradient-bg rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Asesoramiento Inmobiliario</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Consultoría personalizada para resolver todas tus dudas y tomar las mejores decisiones en tu inversión inmobiliaria.</p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 gradient-bg rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Comunicación de Propiedades</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Presentación profesional de inmuebles con fotografía de calidad y estrategias de marketing efectivas.</p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 gradient-bg rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Gestión Integral</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Nos ocupamos de todos los aspectos legales y administrativos para que tu experiencia sea simple y segura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appraisal Section -->
+    <section id="tasaciones" class="py-12 sm:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl" style="max-height: 500px;">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop" 
+                         alt="Tasaciones Profesionales" 
+                         class="w-full h-full object-cover"
+                         style="min-height: 300px;">
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary">
+                        Tasaciones Profesionales e Integrales
+                    </h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed text-sm sm:text-base">
+                        Entendemos que tasar una propiedad no se limita a colocar un número frío en un papel. Para nosotros, es un proceso riguroso de análisis técnico, criterio profesional basado en la experiencia y un profundo conocimiento de las dinámicas inmobiliarias locales en Chivilcoy.
+                    </p>
+                    <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                        Te brindamos un acompañamiento honesto y realista que te permita tomar decisiones informadas y maximizar el valor de tu patrimonio de forma eficiente y segura.
+                    </p>
+                    <a href="https://wa.me/5492346636360?text=Hola%20Leticia,%20me%20gustar%C3%ADa%20solicitar%20una%20tasaci%C3%B3n%20profesional." 
+                       class="inline-flex items-center bg-primary hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-full transition-all transform hover:scale-105 shadow-lg text-sm sm:text-base">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        Solicitar Tasación
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-12 sm:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">Contacto</h2>
+                <p class="text-lg sm:text-xl text-gray-600 px-2">¿Tienes alguna duda o quieres conversar sobre tu próximo proyecto? Estamos para ayudarte.</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md text-center card-hover">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-base sm:text-lg mb-2">WhatsApp</h3>
+                    <a href="https://wa.me/5492346636360" class="text-primary hover:text-secondary transition-colors text-sm sm:text-base">2346636360</a>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md text-center card-hover">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-base sm:text-lg mb-2">Email</h3>
+                    <a href="mailto:gomezleticiapropiedades@gmail.com" class="text-primary hover:text-secondary transition-colors text-sm sm:text-base break-all">gomezleticiapropiedades@gmail.com</a>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md text-center card-hover sm:col-span-2 md:col-span-1">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-base sm:text-lg mb-2">Ubicación</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Chivilcoy<br>Provincia de Buenos Aires</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-10 sm:py-12">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div>
+                            <span class="text-lg sm:text-xl font-bold block leading-none">Leticia</span>
+                            <span class="text-lg sm:text-xl font-bold block leading-none">Gómez</span>
+                            <span class="text-xs tracking-widest opacity-80">PROPIEDADES</span>
+                        </div>
+                    </div>
+                    <p class="text-white/80 text-xs sm:text-sm">Acompañándote honesta y profesionalmente en cada paso en el mercado de Chivilcoy y la región. Construyendo relaciones basadas en la confianza.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Inicio</a></li>
+                        <li><a href="#nosotros" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Quiénes Somos</a></li>
+                        <li><a href="#servicios" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Servicios</a></li>
+                        <li><a href="#tasaciones" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Tasaciones</a></li>
+                        <li><a href="#contacto" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-white/80 text-xs sm:text-sm">
+                        <li>WhatsApp: 2346636360</li>
+                        <li>Email: gomezleticiapropiedades@gmail.com</li>
+                        <li>Chivilcoy, Buenos Aires</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-white/60">
+                <p>&copy; 2026 Leticia Gómez Propiedades. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5492346636360?text=Hola%20Leticia,%20quisiera%20hacerte%20una%20consulta." 
+       class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 z-50">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- JavaScript para menú móvil -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Cerrar menú al hacer click en un link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
