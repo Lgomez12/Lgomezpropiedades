@@ -1,0 +1,3 @@
+CAMBIOS: Se quito el mapa general. El formulario de busqueda guarda en Supabase (web_busquedas_clientes) sin abrir WhatsApp, con aviso de exito o error.
+Para instalar en WEB_INMOBILIARIA_ACTUAL: reemplazar JUNTOS index.html y propiedades.js (hacer copia previa de los actuales). Actualizar Chrome con Ctrl+F5.
+IMPORTANTE: La planilla Excel entregada es una exportacion de las consultas actuales, NO se actualiza en tiempo real; el registro central vivo es Supabase.
