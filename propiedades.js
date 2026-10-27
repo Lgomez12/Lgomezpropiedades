@@ -243,7 +243,7 @@ function detailTemplate(p) {
       </div>
 
       <div class="photo-shell relative rounded-2xl overflow-hidden h-[320px] sm:h-[520px] mb-4 ${image ? '' : 'is-empty'}">
-        <img id="mainDetailPhoto" src="${image}" alt="${escapeHtml(p.title)}" class="w-full h-full object-contain bg-slate-100 ${image ? 'cursor-zoom-in' : ''}" ${image ? `role="button" tabindex="0" title="Hacé clic para ampliar la foto" onclick="openPhotoLightbox('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPhotoLightbox('${p.id}')}"` : ''} onerror="handleImageError(this)">
+        <img id="mainDetailPhoto" src="${image}" alt="${escapeHtml(p.title)}" class="w-full h-full object-contain bg-slate-100" onerror="handleImageError(this)">
         <div class="photo-error absolute inset-0 items-center justify-center text-center p-4 text-slate-500 text-lg">Foto pendiente de cargar<br>${p.id}</div>
         <button onclick="prevPhoto('${p.id}')" class="no-print absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-11 h-11 shadow text-2xl">‹</button>
         <button onclick="nextPhoto('${p.id}')" class="no-print absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-11 h-11 shadow text-2xl">›</button>
@@ -298,81 +298,6 @@ function updateMainPhoto(id, num) {
     const thumb = document.getElementById(`thumb-${i}`);
     if (thumb) thumb.className = `h-16 sm:h-20 rounded-lg border ${i===num?'border-primary ring-2 ring-primary/20':'border-slate-200'} bg-slate-100 text-xs text-slate-500 hover:border-primary overflow-hidden`;
   }
-}
-
-// Amplía las fotografías sin modificar el orden, las imágenes ni el CRM.
-let photoLightbox = null;
-function openPhotoLightbox(id) {
-  const p = properties.find(x => x.id === id);
-  if (!p || !p.photos.length || photoLightbox) return;
-
-  let index = Math.max(0, Math.min(currentPhotoIndex - 1, p.photos.length - 1));
-  const previousFocus = document.activeElement;
-  const previousOverflow = document.body.style.overflow;
-  const overlay = document.createElement('div');
-  overlay.id = 'photoLightbox';
-  overlay.setAttribute('role', 'dialog');
-  overlay.setAttribute('aria-modal', 'true');
-  overlay.setAttribute('aria-label', 'Fotografías ampliadas de ' + p.title);
-  overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(10,12,20,.96);display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:60px 52px 54px';
-
-  const big = document.createElement('img');
-  big.style.cssText = 'max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;user-select:none';
-  big.alt = p.title;
-  overlay.appendChild(big);
-
-  const counter = document.createElement('span');
-  counter.style.cssText = 'position:absolute;bottom:16px;left:0;right:0;text-align:center;color:white;font:500 14px Arial,sans-serif;pointer-events:none';
-  overlay.appendChild(counter);
-
-  function showPhoto() {
-    big.src = p.photos[index].url;
-    big.alt = p.photos[index].alt || p.title;
-    counter.textContent = (index + 1) + ' de ' + p.photos.length + ' fotografías';
-  }
-  function navigate(delta) {
-    index = (index + delta + p.photos.length) % p.photos.length;
-    showPhoto();
-  }
-  function makeButton(label, symbol, style, handler) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.setAttribute('aria-label', label);
-    button.textContent = symbol;
-    button.style.cssText = 'position:absolute;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(30,30,40,.75);color:#fff;font:28px Arial,sans-serif;width:44px;height:44px;cursor:pointer;' + style;
-    button.addEventListener('click', handler);
-    overlay.appendChild(button);
-    return button;
-  }
-  const closeButton = makeButton('Cerrar fotografía ampliada', '×', 'top:10px;right:12px', closePhotoLightbox);
-  if (p.photos.length > 1) {
-    makeButton('Foto anterior', '‹', 'left:5px;top:50%;transform:translateY(-50%)', () => navigate(-1));
-    makeButton('Foto siguiente', '›', 'right:5px;top:50%;transform:translateY(-50%)', () => navigate(1));
-  }
-  function onKeyDown(event) {
-    if (event.key === 'Escape') { event.preventDefault(); closePhotoLightbox(); }
-    else if (event.key === 'ArrowLeft' && p.photos.length > 1) { event.preventDefault(); navigate(-1); }
-    else if (event.key === 'ArrowRight' && p.photos.length > 1) { event.preventDefault(); navigate(1); }
-    else if (event.key === 'Tab') { event.preventDefault(); closeButton.focus(); }
-  }
-  overlay.addEventListener('click', event => {
-    if (event.target === overlay) closePhotoLightbox();
-  });
-  photoLightbox = { overlay, onKeyDown, previousOverflow, previousFocus };
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('keydown', onKeyDown);
-  document.body.appendChild(overlay);
-  showPhoto();
-  closeButton.focus();
-}
-function closePhotoLightbox() {
-  if (!photoLightbox) return;
-  const { overlay, onKeyDown, previousOverflow, previousFocus } = photoLightbox;
-  photoLightbox = null;
-  document.removeEventListener('keydown', onKeyDown);
-  overlay.remove();
-  document.body.style.overflow = previousOverflow;
-  if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
 }
 
 function nextPhoto(id){ const p = properties.find(x => x.id === id); if (!p || !p.photos.length) return; updateMainPhoto(id, currentPhotoIndex === p.photos.length ? 1 : currentPhotoIndex + 1); }

@@ -1,0 +1,30 @@
+/* Asistente Leticia Gómez Propiedades, sin interferir con la web actual */
+#lg-chat {font-family:Poppins,Arial,sans-serif;position:fixed;right:16px;bottom:92px;z-index:90;color:#19243a}
+#lg-chat * {box-sizing:border-box}
+#lg-chat .lgc-launch{border:0;border-radius:30px;background:#68358c;color:white;box-shadow:0 8px 25px #34234b44;padding:12px 18px;cursor:pointer;font-weight:600;font-size:14px;display:flex;gap:9px;align-items:center}
+#lg-chat .lgc-launch:hover{background:#542575}
+#lg-chat .lgc-window{width:min(390px,calc(100vw - 28px));height:min(590px,calc(100dvh - 125px));background:white;border:1px solid #e9e1ee;border-radius:18px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 18px 48px #1e153657}
+#lg-chat .lgc-header{background:#68358c;color:white;padding:15px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+#lg-chat .lgc-brand{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;line-height:1.4}
+#lg-chat .lgc-brand img{width:35px;height:35px;object-fit:contain;background:white;border-radius:8px;padding:3px}
+#lg-chat .lgc-close{background:none;border:0;color:white;font-size:26px;cursor:pointer;line-height:1}
+#lg-chat .lgc-body{overflow:auto;padding:15px;flex:1;overscroll-behavior:contain}
+#lg-chat .lgc-bubble{padding:12px;background:#f3eff6;border-radius:12px;line-height:1.5;font-size:13px;margin:0 0 13px}
+#lg-chat .lgc-question{font-size:14px;font-weight:700;margin:12px 0}
+#lg-chat .lgc-actions{display:grid;gap:8px}
+#lg-chat button.lgc-option{width:100%;background:white;border:1px solid #b6a0c9;border-radius:10px;color:#68358c;text-align:left;padding:10px 12px;cursor:pointer;font-size:13px;font-weight:600}
+#lg-chat button.lgc-option:hover{background:#f6f0fa}
+#lg-chat .lgc-field{width:100%;padding:10px;border:1px solid #c8cbd2;border-radius:8px;margin:5px 0 10px;font:inherit;font-size:14px}
+#lg-chat label{font-size:12px;font-weight:600;display:block;margin-top:8px}
+#lg-chat .lgc-primary{background:#68358c;color:white;border:0;border-radius:9px;padding:11px 14px;font-size:13px;font-weight:700;cursor:pointer;width:100%}
+#lg-chat .lgc-secondary{background:white;color:#68358c;border:1px solid #68358c;border-radius:9px;padding:9px 12px;font-size:12px;cursor:pointer}
+#lg-chat .lgc-mini{background:#fafafa;border:1px solid #e3e3e3;border-radius:12px;margin:9px 0;display:flex;gap:10px;padding:10px;font-size:12px}
+#lg-chat .lgc-mini img{width:85px;height:90px;border-radius:8px;object-fit:cover;background:#f1f1f1}
+#lg-chat .lgc-mini strong{font-size:13px}
+#lg-chat .lgc-mini a{color:#68358c;font-weight:700;text-decoration:underline}
+#lg-chat .lgc-foot{border-top:1px solid #eee;padding:9px 13px;text-align:center;font-size:11px;background:#fafafa}
+#lg-chat .lgc-foot a{color:#68358c;text-decoration:underline}
+#lg-chat .lgc-small{font-size:11px;color:#667085;line-height:1.5}
+#lg-chat .lgc-error{color:#a52a2a;font-size:12px}
+@media(max-width:480px){#lg-chat{right:10px;bottom:82px}#lg-chat .lgc-window{height:min(600px,calc(100dvh - 105px))}}
+@media print{#lg-chat{display:none!important}}

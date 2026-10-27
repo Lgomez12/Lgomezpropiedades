@@ -1,3 +1,13 @@
-CAMBIOS: Se quito el mapa general. El formulario de busqueda guarda en Supabase (web_busquedas_clientes) sin abrir WhatsApp, con aviso de exito o error.
-Para instalar en WEB_INMOBILIARIA_ACTUAL: reemplazar JUNTOS index.html y propiedades.js (hacer copia previa de los actuales). Actualizar Chrome con Ctrl+F5.
-IMPORTANTE: La planilla Excel entregada es una exportacion de las consultas actuales, NO se actualiza en tiempo real; el registro central vivo es Supabase.
+CHATBOT LETICIA — INTEGRACIÓN DEL REGISTRO REAL (sin publicar todavía)
+
+Ya existe la tabla web_busquedas_clientes en Supabase, con columnas nombre, telefono, busqueda, origen y estado. Su trigger trg_busqueda_web_a_crm se ejecuta al insertar y transfiere datos a Búsquedas del CRM.
+
+Archivos: index.html, propiedades.js, chatbot.js, chatbot.css y favicon.png. No reemplazar propiedades.js en la web pública si la versión online fue modificada luego de esta copia de prueba. Siempre comparar con GitHub antes de desplegar.
+
+PRUEBA LOCAL: Al abrir index.html desde el Escritorio, el chatbot detecta file://; permite navegar y simular el registro, pero no envía nombres ni teléfonos reales. Este comportamiento protege el CRM de consultas ficticias.
+
+PRUEBA REAL: Requiere servir la web por HTTP(S). Antes de publicarlo en la web principal, instalarlo en una vista previa aislada o entorno de test, y verificar una inserción con consentimiento usando un registro claramente identificable como prueba y luego retirarlo del CRM. La confirmación definitiva se muestra SOLO si Supabase devuelve la inserción sin error.
+
+INTEGRACIÓN EN GITHUB (cuando esté probado): conservar index.html actualizado con referencias a chatbot.css y chatbot.js; cargar esos 2 archivos y mantener favicon.png y propiedades.js vigentes. No subir LEER_PRIMERO.txt por necesidad funcional. No modifica tablas, políticas RLS o triggers.
+
+PENDIENTE: alerta en el CRM cuando entra una nueva propiedad coincidente. No está implementada en estos archivos.
