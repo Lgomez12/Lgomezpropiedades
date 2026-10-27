@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leticia Gómez Propiedades | Chivilcoy</title>
+
+  <!-- Identidad de marca para navegador y enlaces compartidos -->
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="description" content="Venta, alquiler y tasaciones en Chivilcoy y alrededores. Hacemos simple lo importante." />
+  <link rel="canonical" href="https://www.leticiagomezpropiedades.ar/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Leticia Gómez Propiedades" />
+  <meta property="og:title" content="Leticia Gómez Propiedades | Chivilcoy" />
+  <meta property="og:description" content="Propiedades en venta y alquiler, y tasaciones en Chivilcoy y alrededores. Hacemos simple lo importante." />
+  <meta property="og:url" content="https://www.leticiagomezpropiedades.ar/" />
+  <meta property="og:image" content="https://www.leticiagomezpropiedades.ar/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://www.leticiagomezpropiedades.ar/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Leticia Gómez Propiedades. Venta, alquiler y tasaciones en Chivilcoy." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Leticia Gómez Propiedades | Chivilcoy" />
+  <meta name="twitter:description" content="Venta, alquiler y tasaciones en Chivilcoy y alrededores." />
+  <meta name="twitter:image" content="https://www.leticiagomezpropiedades.ar/og-image.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#68358C', secondary: '#44AD46', accent: '#F8F9FA' },
+          fontFamily: { sans: ['Poppins', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background:#f8fafc; }
+    .gradient-bg { background: linear-gradient(135deg, #68358C 0%, #9B4D8A 100%); }
+    .card-hover { transition: all .25s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow:0 18px 38px rgba(15,23,42,.11); }
+    .mobile-menu { max-height: 0; overflow:hidden; transition:max-height .3s ease-out; }
+    .mobile-menu.active { max-height:420px; }
+    .photo-shell { background: linear-gradient(135deg,#f1f5f9 0%,#e5e7eb 100%); }
+    .photo-error { display:none; }
+    .photo-shell.is-empty img { display:none; }
+    .photo-shell.is-empty .photo-error { display:flex; }
+    .lgp-pin span {display:block; background:#68358C; color:#fff; border:2px solid white; border-radius:18px; font-size:12px; font-weight:700; text-align:center; padding:7px 5px; box-shadow:0 2px 10px #3335;}
+    .detail-tab.active { border-color:#68358C; color:#68358C; font-weight:700; }
+    @media print {
+      header, #filtersBlock, #contacto, footer, .no-print, #floatingWhatsApp { display:none !important; }
+      body { background:white; }
+      main { padding-top:0 !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="chatbot.css" />
+</head>
+<body class="font-sans text-slate-700">
+
+  <header class="fixed w-full top-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+    <div class="container mx-auto px-4 sm:px-6 py-4">
+      <nav class="flex justify-between items-center">
+        <a href="#cartera" class="block">
+          <span class="text-xl sm:text-2xl font-bold text-primary block leading-none">Leticia Gómez</span>
+          <span class="text-xs text-slate-600 tracking-widest">PROPIEDADES</span>
+        </a>
+
+        <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+          <a href="#cartera" class="text-slate-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Cartera</a>
+          <a href="#nosotros" class="text-slate-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Quiénes Somos</a>
+          <a href="#servicios" class="text-slate-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Servicios</a>
+          <a href="#tasaciones" class="text-slate-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Tasaciones</a>
+          <a href="#contacto" class="text-slate-600 hover:text-primary transition-colors font-medium text-sm lg:text-base">Contacto</a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden text-slate-600 focus:outline-none p-2" aria-label="Abrir menú">
+          <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </nav>
+
+      <div id="mobile-menu" class="mobile-menu flex-col md:hidden">
+        <a href="#cartera" class="block text-slate-600 hover:text-primary transition-colors font-medium py-3 border-t border-slate-100">Cartera</a>
+        <a href="#nosotros" class="block text-slate-600 hover:text-primary transition-colors font-medium py-3 border-t border-slate-100">Quiénes Somos</a>
+        <a href="#servicios" class="block text-slate-600 hover:text-primary transition-colors font-medium py-3 border-t border-slate-100">Servicios</a>
+        <a href="#tasaciones" class="block text-slate-600 hover:text-primary transition-colors font-medium py-3 border-t border-slate-100">Tasaciones</a>
+        <a href="#contacto" class="block text-slate-600 hover:text-primary transition-colors font-medium py-3 border-t border-slate-100">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24 sm:pt-28">
+
+    <section id="cartera" class="py-10 sm:py-14 bg-gradient-to-br from-slate-50 to-white">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div id="listView">
+          <div class="max-w-5xl mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-3">Cartera de propiedades</h1>
+            <p class="text-base sm:text-lg text-slate-600 max-w-3xl">Conocé las propiedades disponibles para venta, alquiler y alquiler temporario en Chivilcoy y alrededores. Buscá por código, zona, tipo de inmueble o palabra clave.</p>
+          </div>
+
+          <div id="filtersBlock" class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 mb-8">
+            <div class="grid md:grid-cols-12 gap-4">
+              <div class="md:col-span-5">
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Buscar</label>
+                <input id="searchInput" type="text" placeholder="Código, zona o palabra clave" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Operación</label>
+                <select id="operationFilter" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                  <option value="todas">Todas</option><option value="venta">Venta</option><option value="alquiler">Alquiler</option><option value="temporario">Temporario</option>
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Tipo</label>
+                <select id="typeFilter" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                  <option value="todos">Todos</option><option value="casa">Casa</option><option value="departamento">Departamento</option><option value="duplex">Dúplex</option><option value="ph">PH</option><option value="terreno">Terreno</option><option value="quinta">Quinta</option><option value="local">Local</option>
+                </select>
+              </div>
+              <div class="md:col-span-3">
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Zona</label>
+                <select id="zoneFilter" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                  <option value="todas">Todas</option><option value="chivilcoy">Chivilcoy</option><option value="caba">CABA</option><option value="la-rica">La Rica</option><option value="emilio-ayarza">Emilio Ayarza</option>
+                </select>
+              </div>
+            </div>
+            <details class="mt-5">
+              <summary class="cursor-pointer text-sm font-bold text-primary">Más filtros</summary>
+              <div class="grid md:grid-cols-12 gap-4 mt-4">
+                <div class="md:col-span-3">
+                  <label class="block text-sm font-semibold text-slate-700 mb-2">Moneda</label>
+                  <select id="currencyFilter" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                    <option value="todas">Cualquiera</option>
+                    <option value="USD">USD</option>
+                    <option value="ARS">ARS</option>
+                  </select>
+                </div>
+                <div class="md:col-span-3">
+                  <label class="block text-sm font-semibold text-slate-700 mb-2">Precio desde</label>
+                  <input id="minPriceFilter" type="number" min="0" placeholder="Ej. 40000" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                </div>
+                <div class="md:col-span-3">
+                  <label class="block text-sm font-semibold text-slate-700 mb-2">Precio hasta</label>
+                  <input id="maxPriceFilter" type="number" min="0" placeholder="Ej. 90000" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                </div>
+                <div class="md:col-span-3">
+                  <label class="block text-sm font-semibold text-slate-700 mb-2">Características</label>
+                  <input id="amenityFilter" type="text" placeholder="Pileta, garage, terraza..." class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                </div>
+              </div>
+            </details>
+
+            <div class="flex flex-col sm:flex-row gap-3 mt-5">
+              <button onclick="filterProperties()" class="bg-primary hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-lg transition-all">Aplicar búsqueda</button>
+              <button onclick="resetFilters()" class="bg-white hover:bg-slate-50 text-primary border border-primary font-semibold py-3 px-6 rounded-lg transition-all">Restablecer</button>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center mb-5">
+            <p id="resultCount" class="text-sm text-slate-500"></p>
+            <select id="sortFilter" onchange="renderCards()" class="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+              <option value="recientes">Más recientes</option>
+              <option value="menor">Menor precio</option>
+              <option value="mayor">Mayor precio</option>
+            </select>
+          </div>
+
+          <div id="propertyGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
+
+          <div id="noResults" class="hidden text-center mt-10 bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">No encontramos propiedades con esos criterios.</h3>
+            <p class="text-slate-600 mb-5">Escribinos y contanos qué estás buscando. Podemos avisarte cuando ingrese una opción acorde.</p>
+            <a href="https://wa.me/5492346636360?text=Hola%20Leticia,%20estoy%20buscando%20una%20propiedad%20con%20caracter%C3%ADsticas%20espec%C3%ADficas." class="inline-flex bg-primary hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-full transition-all">Enviar búsqueda</a>
+          </div>
+          <section class="mt-10 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2">¿Buscás una propiedad con características específicas?</h2>
+            <p class="text-slate-600 mb-5">Completá el formulario. Tu solicitud quedará registrada en nuestra base de búsquedas para que podamos contactarte cuando ingrese una propiedad acorde.</p>
+            <form onsubmit="savePropertySearch(event)" class="grid md:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-sm font-semibold mb-1">Nombre</label>
+                <input id="searchName" required class="w-full border border-slate-300 rounded-lg px-3 py-2">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold mb-1">WhatsApp</label>
+                <input id="searchPhone" required class="w-full border border-slate-300 rounded-lg px-3 py-2">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-semibold mb-1">Qué estás buscando</label>
+                <input id="searchNeed" required placeholder="Casa, alquiler, terreno, zona, presupuesto..." class="w-full border border-slate-300 rounded-lg px-3 py-2">
+              </div>
+              <div class="md:col-span-4">
+                <button id="searchSubmit" type="submit" class="bg-primary hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-lg transition-all">Registrar mi búsqueda</button>
+                <p id="searchFeedback" role="status" aria-live="polite" class="mt-3 text-sm"></p>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="detailView" class="hidden"></div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="py-12 sm:py-16 bg-white">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-slate-900">Quiénes somos</h2>
+            <h3 class="text-lg sm:text-xl text-primary mb-4 font-semibold">Asesoramiento cercano, profesional y con identidad local</h3>
+            <p class="text-slate-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">Leticia Gómez Propiedades nace en Chivilcoy con el propósito de acompañar a cada cliente de manera cercana, clara y profesional. Brindamos asesoramiento en tasaciones, ventas y alquileres, cuidando cada etapa del proceso con responsabilidad y compromiso.</p>
+            <p class="text-slate-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">Creemos en un trabajo basado en la confianza, la comunicación clara y el acompañamiento personalizado, para que cada decisión se tome con seguridad y tranquilidad.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div class="p-4 bg-slate-50 rounded-lg"><h4 class="font-semibold text-primary mb-2 text-sm sm:text-base">Misión</h4><p class="text-xs sm:text-sm text-slate-600">Brindar un servicio profesional, cercano y personalizado, acompañando a cada cliente en cada etapa de su operación.</p></div>
+              <div class="p-4 bg-slate-50 rounded-lg"><h4 class="font-semibold text-primary mb-2 text-sm sm:text-base">Visión</h4><p class="text-xs sm:text-sm text-slate-600">Ser una marca de referencia en Chivilcoy, reconocida por su compromiso, cercanía y forma de acompañar cada proceso.</p></div>
+            </div>
+          </div>
+          <div class="relative flex justify-center">
+            <img src="fotoletty.jpeg" alt="Leticia Gómez, titular de Leticia Gómez Propiedades" class="rounded-lg shadow-2xl w-full max-w-md object-cover" style="height: 560px; object-position: center 20%;" onerror="this.parentElement.innerHTML='<div class=&quot;rounded-lg bg-slate-100 w-full max-w-md h-[560px] flex items-center justify-center text-slate-400&quot;>Foto institucional</div>'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="py-12 sm:py-16 bg-slate-50">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 sm:mb-12">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-slate-900">Nuestros servicios</h2>
+          <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto px-2">Te acompañamos en cada paso del proceso inmobiliario con profesionalismo y dedicación.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md"><h3 class="text-lg sm:text-xl font-semibold mb-3 text-slate-900">Venta de propiedades</h3><p class="text-slate-600 text-sm sm:text-base">Acompañamos todo el proceso de venta, desde la publicación hasta el cierre de la operación, cuidando cada detalle y la documentación necesaria.</p></div>
+          <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md"><h3 class="text-lg sm:text-xl font-semibold mb-3 text-slate-900">Alquileres</h3><p class="text-slate-600 text-sm sm:text-base">Asesoramos en alquileres permanentes y comerciales, acompañando la búsqueda, la publicación y la gestión de cada operación.</p></div>
+          <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md"><h3 class="text-lg sm:text-xl font-semibold mb-3 text-slate-900">Tasaciones profesionales</h3><p class="text-slate-600 text-sm sm:text-base">Realizamos valoraciones de propiedades con criterio profesional, análisis del mercado y conocimiento local.</p></div>
+          <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md"><h3 class="text-lg sm:text-xl font-semibold mb-3 text-slate-900">Asesoramiento personalizado</h3><p class="text-slate-600 text-sm sm:text-base">Te orientamos en cada consulta para que puedas tomar decisiones claras y seguras sobre tu propiedad.</p></div>
+          <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md"><h3 class="text-lg sm:text-xl font-semibold mb-3 text-slate-900">Marketing inmobiliario</h3><p class="text-slate-600 text-sm sm:text-base">Presentamos cada propiedad con fotografía cuidada, contenido claro y difusión profesional.</p></div>
+          <div class="bg-white p-6 sm:p-8 rounded-lg card-hover shadow-md"><h3 class="text-lg sm:text-xl font-semibold mb-3 text-slate-900">Gestión integral</h3><p class="text-slate-600 text-sm sm:text-base">Acompañamos la documentación y los pasos administrativos necesarios para que cada operación avance de manera clara y ordenada.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tasaciones" class="py-12 sm:py-16 bg-white">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl photo-shell" style="min-height: 300px;">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop" alt="Tasaciones Profesionales" class="w-full h-full object-cover" style="min-height: 300px;">
+          </div>
+          <div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-primary">Tasaciones con criterio profesional</h2>
+            <p class="text-slate-600 mb-4 leading-relaxed text-sm sm:text-base">Tasar una propiedad implica mucho más que definir un valor. Requiere análisis, criterio profesional y conocimiento del mercado. En Leticia Gómez Propiedades trabajamos cada tasación con responsabilidad, observando las características del inmueble, su ubicación, su entorno y el contexto actual.</p>
+            <p class="text-slate-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">Te brindamos una orientación clara y realista para que puedas tomar decisiones con información, seguridad y tranquilidad.</p>
+            <a href="https://wa.me/5492346636360?text=Hola%20Leticia,%20me%20gustar%C3%ADa%20solicitar%20una%20tasaci%C3%B3n%20profesional." class="inline-flex items-center bg-primary hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-full transition-all transform hover:scale-105 shadow-lg text-sm sm:text-base">Solicitar Tasación</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="py-12 sm:py-16 bg-slate-50">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 sm:mb-12">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-slate-900">Contacto</h2>
+          <p class="text-lg sm:text-xl text-slate-600 px-2">¿Querés vender, alquilar, tasar o consultar por una propiedad? Escribinos y te acompañamos.</p>
+        </div>
+        <!-- Redes y contacto: WhatsApp queda disponible en el botón flotante. -->
+        <div class="grid grid-cols-2 gap-3 sm:gap-6 max-w-4xl mx-auto">
+          <a href="https://www.instagram.com/leticiagomezpropiedades/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Leticia Gómez Propiedades" class="block min-w-0 bg-white border-2 border-secondary rounded-2xl p-4 sm:p-7 shadow-md text-center card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <svg class="w-9 h-9 mx-auto mb-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>
+            <h3 class="font-semibold text-slate-900 text-base sm:text-lg mb-1">Instagram</h3>
+            <p class="text-primary text-xs sm:text-sm">Visitá nuestro perfil</p>
+          </a>
+          <!-- Enlace provisto: pendiente reemplazar por la URL específica del perfil de Facebook inmobiliario. -->
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Facebook" class="block min-w-0 bg-white border-2 border-secondary rounded-2xl p-4 sm:p-7 shadow-md text-center card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <svg class="w-9 h-9 mx-auto mb-3 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.3 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1A23 23 0 0 0 14.1 3c-2.5 0-4.2 1.5-4.2 4.3v2.3H7v3.2h2.9V21h3.4Z"/></svg>
+            <h3 class="font-semibold text-slate-900 text-base sm:text-lg mb-1">Facebook</h3>
+            <p class="text-primary text-xs sm:text-sm">Abrir Facebook</p>
+          </a>
+          <a href="mailto:lgomezpropiedades@gmail.com" aria-label="Enviar correo a Leticia Gómez Propiedades" class="block min-w-0 bg-white border-2 border-secondary rounded-2xl p-4 sm:p-7 shadow-md text-center card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <svg class="w-9 h-9 mx-auto mb-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+            <h3 class="font-semibold text-slate-900 text-base sm:text-lg mb-1">Email</h3>
+            <p class="text-primary text-xs sm:text-sm break-all">lgomezpropiedades@gmail.com</p>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Chivilcoy%2C%20Buenos%20Aires%2C%20Argentina" target="_blank" rel="noopener noreferrer" aria-label="Ver Chivilcoy en Google Maps" class="block min-w-0 bg-white border-2 border-secondary rounded-2xl p-4 sm:p-7 shadow-md text-center card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <svg class="w-9 h-9 mx-auto mb-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <h3 class="font-semibold text-slate-900 text-base sm:text-lg mb-1">Ubicación</h3>
+            <p class="text-primary text-xs sm:text-sm">Chivilcoy<br>Buenos Aires</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="gradient-bg text-white py-10 sm:py-12">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div><span class="text-lg sm:text-xl font-bold block leading-none">Leticia Gómez</span><span class="text-xs tracking-widest opacity-80">PROPIEDADES</span><p class="text-white/80 text-xs sm:text-sm mt-4">Acompañamos cada operación con cercanía, profesionalismo y una mirada personalizada.</p></div>
+        <div><h4 class="text-base sm:text-lg font-semibold mb-4">Enlaces rápidos</h4><ul class="space-y-2"><li><a href="#cartera" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Cartera</a></li><li><a href="#nosotros" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Quiénes Somos</a></li><li><a href="#servicios" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Servicios</a></li><li><a href="#tasaciones" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Tasaciones</a></li><li><a href="#contacto" class="text-white/80 hover:text-white transition-colors text-sm sm:text-base">Contacto</a></li></ul></div>
+        <div><h4 class="text-base sm:text-lg font-semibold mb-4">Contacto</h4><ul class="space-y-2 text-white/80 text-xs sm:text-sm"><li>Email: lgomezpropiedades@gmail.com</li><li>Chivilcoy, Buenos Aires</li></ul></div>
+      </div>
+      <div class="border-t border-white/20 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-white/60"><p>&copy; 2026 Leticia Gómez Propiedades. Todos los derechos reservados.</p></div>
+    </div>
+  </footer>
+
+  <a id="floatingWhatsApp" href="https://wa.me/5492346636360?text=Hola%20Leticia,%20quisiera%20hacerte%20una%20consulta." class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 z-50" aria-label="WhatsApp">
+    <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="propiedades.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
