@@ -39,6 +39,20 @@ function storagePublicUrl(path) {
   return data.publicUrl;
 }
 
+// Código comercial para publicaciones. No cambia el identificador interno ni los enlaces.
+function commercialCode(p) {
+  const raw = String(p.id || '').trim();
+  const match = /^CRM[-_\s]*0*(\d+)$/i.exec(raw);
+  if (!match) return raw; // Se conservan los códigos V-/A- ya asignados.
+  const prefix = p.operation === 'venta' ? 'V' : 'A';
+  const number = String(Number(match[1])).padStart(3, '0');
+  const proposed = `${prefix}-${number}`;
+  // Evita duplicar un código comercial existente en otra propiedad.
+  const occupied = properties.some(other => other.id !== p.id &&
+    String(other.id || '').trim().toUpperCase() === proposed.toUpperCase());
+  return occupied ? `${prefix}-${String(900000 + Number(match[1]))}` : proposed;
+}
+
 function normalizeProperty(row) {
   const fotos = Array.isArray(row.web_propiedad_fotos)
     ? row.web_propiedad_fotos.sort((a, b) => (a.orden || 0) - (b.orden || 0))
@@ -148,12 +162,12 @@ function cardTemplate(p) {
       <button onclick="showDetail('${p.id}')" class="block w-full text-left">
         <div class="photo-shell relative h-60 overflow-hidden ${image ? '' : 'is-empty'}">
           <img src="${image}" alt="${escapeHtml(p.title)}" class="w-full h-full object-cover" onerror="handleImageError(this)">
-          <div class="photo-error absolute inset-0 items-center justify-center text-center p-4 text-slate-500 text-sm">Espacio para foto principal<br>${p.id}</div>
+          <div class="photo-error absolute inset-0 items-center justify-center text-center p-4 text-slate-500 text-sm">Espacio para foto principal<br>${commercialCode(p)}</div>
           <span class="absolute top-3 left-3 bg-white text-primary text-xs font-bold px-3 py-1 rounded-full shadow">${photoText}</span><span class="absolute top-3 right-3 ${statusColor(p)} text-xs font-bold px-3 py-1 rounded-full shadow">${statusLabel(p)}</span>
         </div>
       </button>
       <div class="p-5">
-        <div class="flex justify-between items-center mb-3"><span class="text-sm font-semibold text-primary">${statusLabel(p)}</span><span class="text-sm text-slate-500">Cód. ${p.id}</span></div>
+        <div class="flex justify-between items-center mb-3"><span class="text-sm font-semibold text-primary">${statusLabel(p)}</span><span class="text-sm text-slate-500">Cód. ${commercialCode(p)}</span></div>
         <h2 class="text-xl font-bold text-slate-900 mb-2">${escapeHtml(p.title)}</h2>
         <p class="text-slate-600 text-sm mb-3">${escapeHtml(p.address)}</p>
         <p class="text-slate-600 text-sm mb-4">${escapeHtml(p.summary)}</p>
@@ -163,7 +177,7 @@ function cardTemplate(p) {
           <button onclick="shareProperty('${p.id}')" class="border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold py-3 rounded-lg transition-all">Compartir</button>
         </div>
         <button onclick="showDetail('${p.id}')" class="w-full border border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 rounded-lg transition-all mb-3">Ver publicación</button>
-        <a href="${waLink(p.id)}" class="block text-center bg-secondary hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition-all">${p.commercialStatus === 'disponible' ? 'Consultar por' : 'Consultar sobre'} ${p.id}</a>
+        <a href="${waLink(p.id)}" class="block text-center bg-secondary hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition-all">${p.commercialStatus === 'disponible' ? 'Consultar por' : 'Consultar sobre'} ${commercialCode(p)}</a>
       </div>
     </article>`;
 }
@@ -179,7 +193,7 @@ function filterProperties() {
   const amenity = document.getElementById('amenityFilter').value.toLowerCase().trim();
 
   filteredProperties = properties.filter(p => {
-    const text = `${p.id} ${p.title} ${p.address} ${p.summary} ${p.keywords} ${p.amenities.join(' ')}`.toLowerCase();
+    const text = `${p.id} ${commercialCode(p)} ${p.title} ${p.address} ${p.summary} ${p.keywords} ${p.amenities.join(' ')}`.toLowerCase();
     const priceOk = (!minPrice || p.priceNumber >= minPrice) && (!maxPrice || (p.priceNumber > 0 && p.priceNumber <= maxPrice));
     return (!search || text.includes(search)) && (!amenity || text.includes(amenity)) && priceOk && (currency === 'todas' || p.currency === currency) && (op === 'todas' || normalizeOp(p.operation) === op) && (type === 'todos' || p.type === type) && (zone === 'todas' || p.zone === zone);
   });
@@ -232,7 +246,7 @@ function detailTemplate(p) {
       <div class="mb-3 inline-flex rounded-full px-4 py-2 text-xs font-bold ${statusColor(p)}">${statusLabel(p)}</div>
       <div class="flex flex-col lg:flex-row lg:justify-between gap-4 mb-6">
         <div>
-          <div class="flex items-center gap-3 mb-3"><span class="inline-flex bg-primary text-white text-sm font-bold px-4 py-2 rounded-full capitalize">${p.operation}</span><span class="text-slate-500 font-medium">Código ${p.id}</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="inline-flex bg-primary text-white text-sm font-bold px-4 py-2 rounded-full capitalize">${p.operation}</span><span class="text-slate-500 font-medium">Código ${commercialCode(p)}</span></div>
           <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">${escapeHtml(p.title)}</h1>
           <p class="text-slate-600 text-base sm:text-lg">${escapeHtml(p.address)}</p>
         </div>
@@ -244,7 +258,7 @@ function detailTemplate(p) {
 
       <div class="photo-shell relative rounded-2xl overflow-hidden h-[320px] sm:h-[520px] mb-4 ${image ? '' : 'is-empty'}">
         <img id="mainDetailPhoto" src="${image}" alt="${escapeHtml(p.title)}" class="w-full h-full object-contain bg-slate-100 ${image ? 'cursor-zoom-in' : ''}" ${image ? `role="button" tabindex="0" title="Hacé clic para ampliar la foto" onclick="openPhotoLightbox('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPhotoLightbox('${p.id}')}"` : ''} onerror="handleImageError(this)">
-        <div class="photo-error absolute inset-0 items-center justify-center text-center p-4 text-slate-500 text-lg">Foto pendiente de cargar<br>${p.id}</div>
+        <div class="photo-error absolute inset-0 items-center justify-center text-center p-4 text-slate-500 text-lg">Foto pendiente de cargar<br>${commercialCode(p)}</div>
         <button onclick="prevPhoto('${p.id}')" class="no-print absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-11 h-11 shadow text-2xl">‹</button>
         <button onclick="nextPhoto('${p.id}')" class="no-print absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-11 h-11 shadow text-2xl">›</button>
       </div>
@@ -257,7 +271,7 @@ function detailTemplate(p) {
           <div class="grid sm:grid-cols-2 gap-4 mb-8">
             <div class="border-b border-slate-200 py-3 flex justify-between"><span class="text-slate-500">Tipo</span><strong class="text-slate-900 capitalize">${p.type}</strong></div>
             <div class="border-b border-slate-200 py-3 flex justify-between"><span class="text-slate-500">Operación</span><strong class="text-slate-900">${statusLabel(p)}</strong></div>
-            <div class="border-b border-slate-200 py-3 flex justify-between"><span class="text-slate-500">Código</span><strong class="text-slate-900">${p.id}</strong></div>
+            <div class="border-b border-slate-200 py-3 flex justify-between"><span class="text-slate-500">Código</span><strong class="text-slate-900">${commercialCode(p)}</strong></div>
             <div class="border-b border-slate-200 py-3 flex justify-between"><span class="text-slate-500">Valor</span><strong class="text-slate-900">${escapeHtml(p.price)}</strong></div>
           </div>
           <h2 class="text-xl font-bold text-slate-900 mb-4">Dónde está</h2>
@@ -377,7 +391,7 @@ function closePhotoLightbox() {
 
 function nextPhoto(id){ const p = properties.find(x => x.id === id); if (!p || !p.photos.length) return; updateMainPhoto(id, currentPhotoIndex === p.photos.length ? 1 : currentPhotoIndex + 1); }
 function prevPhoto(id){ const p = properties.find(x => x.id === id); if (!p || !p.photos.length) return; updateMainPhoto(id, currentPhotoIndex === 1 ? p.photos.length : currentPhotoIndex - 1); }
-function waLink(id) { return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola Leticia, quisiera consultar por la propiedad ' + id + '.')}`; }
+function waLink(id) { const p = properties.find(x => x.id === id); const shown = p ? commercialCode(p) : id; return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola Leticia, quisiera consultar por la propiedad ' + shown + '.')}`; }
 
 async function sendFormToWhatsapp(event, id) {
   event.preventDefault();
@@ -389,7 +403,7 @@ async function sendFormToWhatsapp(event, id) {
 
   await db.from('web_consultas_propiedad').insert({ propiedad_id: p ? p.uuid : null, codigo_propiedad: id, nombre: name, telefono: phone, email: email || null, consulta: msg || null, origen: 'web' });
 
-  const text = `Hola Leticia, quisiera consultar por la propiedad ${id}.\n\nNombre: ${name}\nTeléfono: ${phone}\nEmail: ${email || '-'}\nConsulta: ${msg || '-'}`;
+  const text = `Hola Leticia, quisiera consultar por la propiedad ${p ? commercialCode(p) : id}.\n\nNombre: ${name}\nTeléfono: ${phone}\nEmail: ${email || '-'}\nConsulta: ${msg || '-'}`;
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank');
   event.target.reset();
 }
@@ -426,7 +440,7 @@ async function savePropertySearch(event) {
 
 function isLiked(id) { return localStorage.getItem('lgp_liked_' + id) === '1'; }
 function toggleLike(id, btn) { const key = 'lgp_liked_' + id; const liked = localStorage.getItem(key) === '1'; localStorage.setItem(key, liked ? '0' : '1'); btn.textContent = liked ? '♡ Me gusta' : '♥ Me gusta'; }
-async function shareProperty(id) { const url = `${location.origin}${location.pathname}#propiedad-${id.toLowerCase()}`; const p = properties.find(x => x.id === id); const data = { title: `${p.title} · ${p.id}`, text: `${p.title} - ${p.price} - ${p.address}`, url }; if (navigator.share) { try { await navigator.share(data); } catch(e) {} } else { await navigator.clipboard.writeText(url); alert('Copiamos el enlace de la publicación para compartir.'); } }
+async function shareProperty(id) { const url = `${location.origin}${location.pathname}#propiedad-${id.toLowerCase()}`; const p = properties.find(x => x.id === id); const data = { title: `${p.title} · ${commercialCode(p)}`, text: `${p.title} - ${p.price} - ${p.address}`, url }; if (navigator.share) { try { await navigator.share(data); } catch(e) {} } else { await navigator.clipboard.writeText(url); alert('Copiamos el enlace de la publicación para compartir.'); } }
 function escapeHtml(text) { return String(text || '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;'); }
 
 
